@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <title>Coding Train: Data/APIs 1</title>
+    </head>
+    <body>
+        <canvas id="chart"  width="400" height="400" </canvas>
+
+        <script>
+
+        chartIt();
+
+        async function chartIt(){
+            const dataset = await getData();
+            const ctx = document.getElementById('chart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: dataset.xs,
+                    datasets: [{
+                        label: 'Combined Land-Surface Air and Sea-Surface Water Temperature in °C',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: dataset.ys,
+                        fill: false
+                    }]
+                },
+                // Configuration options go here
+                options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    // Include a dollar sign in the ticks
+                    callback: function(value, index, values) {
+                        return value + '°';
+                    }
+                }
+            }]
+        }
+    }
+            });
+        }
+
+        async function getData() {
+            const xs = [];
+            const ys = [];
+
+            const response = await fetch('ZonAnn.Ts+dSST.csv');
+            const data = await response.text();
+            console.log(data);
+
+            const table = data.trim().split('\n').slice(1);
+            table.forEach(row => {
+                const columns = row.split(',');
+                const year = columns[0];
+                const temp = parseFloat(columns[1]) + 14;
+                xs.push(year);
+                ys.push(temp);
+                console.log(year,temp);
+            });
+        return { xs, ys };
+        }
+        </script>
+    </body>
+</html>
