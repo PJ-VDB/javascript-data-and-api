@@ -1,0 +1,19 @@
+{
+  "name": "2.1_server_side_nodejs",
+  "version": "1.0.0",
+  "description": "This is the data selfie app from the Code Train tutorial.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "example",
+    "data",
+    "selfie"
+  ],
+  "author": "Joey Lee, Daniel Shiffman",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
