@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    </link>
+    <title>Coding Train: Data/APIs 2</title>
+</head>
+
+<body>
+    <h1>The Weather Here</h1>
+    <a href="/">Check In</a> | <a href="/logs">View Check Ins</a>
+    <p>
+        The weather here at <span id="latitude"></span>&deg;, <span id="longitude"></span>&deg; is <span
+            id="summary"></span> with a temperature of
+        <span id="temperature"></span>&deg;C.
+        The concentration of partciulate matter (<span id="aq_parameter"></span>) is <span id="aq_value"></span> <span id="aq_units"></span> last read on <span id="aq_date"></span>
+    </p>
+    <!-- <button class="button" id="btn">Check In</button> -->
+
+    <script src="sketch.js"></script>
+</body>
+
+</html>
